@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Weekly Schedule</title>
+</head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background: white;
+    }
+    h1{
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 50px;
+    }
+    .schedule{
+        display:grid;
+        grid-template-columns: repeat(6,1fr);
+        width:90%;
+        margin:auto;
+        gap: 10px;
+    }
+    .empty{
+        height:40px;
+    }
+    .time{
+        background-color:lightblue;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 20px;
+    }
+    .pink{
+        height:40px;
+        background-color: pink;
+        border-radius: 20px;
+        padding: 10px;
+        text-align:center;
+    }
+    .yellow{
+        height:40px;
+        background-color: yellow;
+        border-radius: 20px;
+        padding: 10px;
+        text-align:center;
+    }
+    .day{
+        font-weight: bold;
+    }
+    .day,.pink,.yellow,.time{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .note{
+        background-color: lightblue;
+        width: 90%;
+        margin: 20px auto;
+        height: 60px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <h1>Weekly schedule</h1>
+
+    <div class="schedule">
+        <div class="empty"></div>
+        <div class="day pink">Monday</div>
+        <div class="day yellow">Tuesday</div>
+        <div class="day pink">Wednesday</div>
+        <div class="day yellow">Thursday</div>
+        <div class="day pink">Friday</div>
+
+        <div class="time">08:00</div>
+        <div class="pink">English</div>
+        <div class="yellow">Science</div>
+        <div class="pink">Math</div>
+        <div class="yellow">Lab</div>
+        <div class="pink">Social</div>
+
+        <div class="time">09:00</div>
+        <div class="pink">English</div>
+        <div class="yellow">Science</div>
+        <div class="pink">Math</div>
+        <div class="yellow">Social</div>
+        <div class="pink">Study class</div>
+
+        <div class="time">10:00</div>
+        <div class="pink">English</div>
+        <div class="yellow">Science</div>
+        <div class="pink">Social</div>
+        <div class="yellow">PT</div>
+        <div class="pink">Study class</div>
+
+        <div class="time">11:00</div>
+        <div class="pink">Math</div>
+        <div class="yellow">Social</div>
+        <div class="pink">Science</div>
+        <div class="yellow">Study class</div>
+        <div class="pink">English</div>
+
+        <div class="time">12:00</div>
+        <div class="pink">Math</div>
+        <div class="yellow">Social</div>
+        <div class="pink">Science</div>
+        <div class="yellow">PT</div>
+        <div class="pink">English</div>
+
+        <div class="time">13:00</div>
+        <div class="pink">English</div>
+        <div class="yellow">Science</div>
+        <div class="pink">PT</div>
+        <div class="yellow">Study class</div>
+        <div class="pink">Social</div>
+    </div>
+
+    <div class="note">Note: Do all the homework given on the same day.</div>
+</body>
+</html>
