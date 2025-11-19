@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Responsive Coffee Menu</title>
+    <style>
+        body{
+            font-family:'Times New Roman', Times, serif;
+            background-color: rgb(250, 244, 237);
+            margin:100px;
+        }
+        .content{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            padding:20px;
+            margin:10px;
+            gap: 20px;
+        }
+        .card{
+            padding:20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px bisque;
+        }
+        .card img{
+            width:100%;
+            height:300px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .title-price{
+            display:flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .price{
+            color:orange;
+        }
+        .para{
+            margin-top:15px;
+            color:grey;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+        @media(max-width:900px){
+            .content{
+                grid-template-columns: repeat(2,1fr);
+            }
+        } 
+        @media(max-width:600px){
+            .content{
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1620052087057-bfd8235f5874?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FwcHVjaW5vfGVufDB8fDB8fHww">
+            <div class="title-price">
+                <span>Cappuccino</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1587985782608-20062892559d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1lcmljYW5vfGVufDB8fDB8fHww">
+            <div class="title-price">
+                <span>Americano</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
+            <div class="title-price">
+                <span>Espresso</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1563731649913-fab41907b535?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFjY2hpYXRvfGVufDB8fDB8fHww">
+            <div class="title-price">
+                <span>Macchiato</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+            <div class="title-price">
+                <span>Mocha</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1669162364316-a74b2d661d1e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvZmZlZSUyMGxhdHRlfGVufDB8fDB8fHww">
+            <div class="title-price">
+                <span>Coffee Latte</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1752917069627-0753ec7a7915?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBpY2NvbG8lMjBsYXR0ZXxlbnwwfHwwfHx8MA%3D%3D">
+            <div class="title-price">
+                <span>Piccolo Latte</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://media.istockphoto.com/id/2201613801/photo/close-up-glass-of-iced-latte.webp?a=1&b=1&s=612x612&w=0&k=20&c=jkFEFkiKYzuqramFrTwksSLzHZc7_vGFZj3WVq-BIPw=">
+            <div class="title-price">
+                <span>Ristretto</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096">
+            <div class="title-price">
+                <span>Affogato</span>
+                <span class="price">$49</span>
+            </div>
+            <p class="para">Usage of internet is becoming more common due to rapid advance.</p>
+        </div>
+    </div>
+    
+</body>
+</html>
