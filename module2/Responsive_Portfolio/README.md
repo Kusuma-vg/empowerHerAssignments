@@ -43,6 +43,13 @@ After generating the initial code, I manually improved the website by:
 
 ---
 
+## 🌌 Output views
+![Desktop View1](Desktop1.png)
+![Desktop View1](Desktop2.png)
+![Tablet View](Tablet.png)
+![Mobile View](Mobile.png)
+---
+
 ## ✨ Sections Included
 - Header  
 - Hero  
