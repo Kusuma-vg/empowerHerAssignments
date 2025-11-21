@@ -44,9 +44,13 @@ After generating the initial code, I manually improved the website by:
 ---
 
 ## 🌌 Output views
+- Desktop View1:
 ![Desktop View1](Desktop1.png)
-![Desktop View1](Desktop2.png)
+- Desktop View2:
+![Desktop View2](Desktop2.png)
+- Tablet View:
 ![Tablet View](Tablet.png)
+- Mobile View:
 ![Mobile View](Mobile.png)
 ---
 
