@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="dom">Hello</h1>
+        <p>This is a para</p>
+        <p>This is a para</p>
+        <p>This is a para</p>
+        <p>This is a para</p>
+    </div>
+
+    <script>
+        document.getElementById("dom").textContent="Welcome to DOM World";
+        document.querySelector(".container").style.backgroundColor="yellow";
+        let para=document.getElementsByTagName("p")
+        for(let p of para){
+            p.style.color="blue";
+        }
+    </script>
+</body>
+
+</html>
