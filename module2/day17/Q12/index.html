@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        <li>Number1</li>
+        <li>Number2</li>
+        <li>Number3</li>
+    </ul>
+    <button id="addbtn">Add Item</button>
+</body>
+<script>
+    let list=document.querySelector("#list")
+    let btn=document.querySelector("#addbtn")
+
+    btn.addEventListener("click", function() {
+        const newLi=document.createElement("li")
+        const index=list.children.length + 1;
+
+        newLi.textContent=`New Item ${index}`
+
+        list.appendChild(newLi)
+
+        if(index%2==0){
+            newLi.style.color="red"
+            newLi.style.fontWeight="bold"
+        }
+        else{
+            newLi.style.color="blue"
+            newLi.style.fontStyle="italic"
+        }
+
+    });
+</script>
+</html>
