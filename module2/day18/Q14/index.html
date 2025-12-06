@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Todo App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #taskInput, #searchInput {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 14px;
+            margin-left: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f3f3f3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+        .toggle-btn {
+            background: green;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enhanced Todo List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter task...">
+    <button id="addTaskBtn">Add Task</button>
+
+    <br><br>
+
+    <input type="text" id="searchInput" placeholder="Search tasks...">
+
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const searchInput = document.getElementById("searchInput");
+        const addTaskBtn = document.getElementById("addTaskBtn");
+        const taskList = document.getElementById("taskList");
+
+        let tasks = [];
+
+        // Load tasks on page load
+        window.onload = () => {
+            const savedTasks = localStorage.getItem("tasks");
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+                renderTasks(tasks);
+            }
+        };
+
+        // Save to localStorage
+        function saveTasks() {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+
+        // Add a new task
+        addTaskBtn.addEventListener("click", () => {
+            const text = taskInput.value.trim();
+
+            if (text === "") {
+                alert("Task cannot be empty!");
+                return;
+            }
+
+            const newTask = {
+                id: Date.now(),
+                text: text,
+                completed: false
+            };
+
+            tasks.push(newTask);
+            saveTasks();
+            renderTasks(tasks);
+
+            taskInput.value = "";
+        });
+
+        // Render tasks
+        function renderTasks(taskArray) {
+            taskList.innerHTML = "";
+
+            taskArray.forEach(task => {
+                const li = document.createElement("li");
+                li.dataset.id = task.id;
+                if (task.completed) li.classList.add("completed");
+
+                li.innerHTML = `
+                    <span>${task.text}</span>
+                    <div class="buttons">
+                        <button class="toggle-btn">✔</button>
+                        <button class="delete-btn">✖</button>
+                    </div>
+                `;
+
+                // Toggle completion
+                li.querySelector(".toggle-btn").addEventListener("click", () => {
+                    task.completed = !task.completed;
+                    saveTasks();
+                    renderTasks(tasks);
+                });
+
+                // Delete task
+                li.querySelector(".delete-btn").addEventListener("click", () => {
+                    tasks = tasks.filter(t => t.id !== task.id);
+                    saveTasks();
+                    renderTasks(tasks);
+                });
+
+                taskList.appendChild(li);
+            });
+        }
+
+        // Search tasks (real-time)
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase();
+            const filteredTasks = tasks.filter(task =>
+                task.text.toLowerCase().includes(query)
+            );
+            renderTasks(filteredTasks);
+        });
+    </script>
+
+</body>
+</html>
