@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Todo App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .todo { padding: 8px; border: 1px solid #ccc; margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .completed { text-decoration: line-through; color: #777; }
+    button { margin-left: 8px; }
+    #todos-container { max-width: 400px; }
+    .empty { color: #555; }
+  </style>
+</head>
+<body>
+  <h1>My Todos</h1>
+  <div id="todos-container"></div>
+
+  <script>
+    const TODOS_KEY = 'todos';
+
+    async function fetchTodos() {
+      const resp = await fetch('https://jsonplaceholder.typicode.com/todos');
+      const data = await resp.json();
+      return data.slice(0, 20);
+    }
+
+    function storeTodos(todos) {
+      localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
+    }
+
+    function getStoredTodos() {
+      const str = localStorage.getItem(TODOS_KEY);
+      return str ? JSON.parse(str) : [];
+    }
+
+    function deleteTodo(id) {
+      const todos = getStoredTodos().filter(t => t.id !== id);
+      storeTodos(todos);
+      renderTodos();
+    }
+
+    function toggleTodo(id) {
+      const todos = getStoredTodos().map(t => {
+        if (t.id === id) {
+          return { ...t, completed: !t.completed };
+        }
+        return t;
+      });
+      storeTodos(todos);
+      renderTodos();
+    }
+
+    function renderTodos() {
+      const container = document.getElementById('todos-container');
+      const todos = getStoredTodos();
+
+      container.innerHTML = '';
+
+      if (todos.length === 0) {
+        const msg = document.createElement('div');
+        msg.textContent = 'No Todos Available';
+        msg.className = 'empty';
+        container.appendChild(msg);
+        return;
+      }
+
+      todos.forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'todo';
+
+        const left = document.createElement('div');
+        left.textContent = t.title;
+        if (t.completed) {
+          left.classList.add('completed');
+        }
+
+        const btnDelete = document.createElement('button');
+        btnDelete.textContent = 'Delete';
+        btnDelete.onclick = () => deleteTodo(t.id);
+
+        const btnToggle = document.createElement('button');
+        btnToggle.textContent = t.completed ? 'Mark Incomplete' : 'Mark Complete';
+        btnToggle.onclick = () => toggleTodo(t.id);
+
+        div.appendChild(left);
+        div.appendChild(btnToggle);
+        div.appendChild(btnDelete);
+
+        container.appendChild(div);
+      });
+    }
+
+    // Initialization
+    (async function init() {
+      const existing = getStoredTodos();
+      if (existing.length === 0) {
+        const todos = await fetchTodos();
+        storeTodos(todos);
+      }
+      renderTodos();
+    })();
+  </script>
+</body>
+</html>
