@@ -12,7 +12,7 @@ const Login=({setIsAuth})=>{
             navigate("/dashboard");
         }
         else{
-            alert("Invalid crendentials");
+            alert("Wrong email or password");
         }
     };
     return (
@@ -23,7 +23,11 @@ const Login=({setIsAuth})=>{
                 <br /><br />
                 <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required />
                 <br /><br />
+                <button type="submit">Login</button>
             </form>
         </div>
     );
-}
+};
+
+export default Login;
+
