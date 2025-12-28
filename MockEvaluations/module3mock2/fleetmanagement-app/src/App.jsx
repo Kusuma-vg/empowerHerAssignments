@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, {useState,useCallback} from "react";
+import {BrowserRouter,Routes,Route,Navigate} from "react-router-dom";
+import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-function App() {
-  const [count, setCount] = useState(0)
+function App(){
+  const [isAuth,setIsAuth]=useState(false);
+  const [fleets,setFleets]=useState([]);
+
+  const addFleet=useCallback((fleet)=> {
+    setFleets((prev)=>[...prev,fleet]);
+  },[]);
+  const deleteFleet=useCallback((id)=>{
+    if(window.confirm("Are you Sure?")){
+      setFleets((prev)=> prev.filter((f)=>f.id!==id));
+    }
+  },[]);
+  const updateDriver=useCallback((id)=>{
+    const newName=prompt("Enter new Driver name");
+    if(newName===null || !newName.trim()) return;
+
+    setFleets((prev)=> prev.map((f)=>f.id===id ? {...f,driver:newName.trim()} :f))
+  },[]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login setIsAuth={setIsAuth} />} />
+      <Route 
+         path="/dashboard"
+         element={
+          <ProtectedRoute isAuth={isAuth}>
+            <AdminDashboard 
+               fleets={fleets}
+               addFleet={addFleet}
+               deleteFleet={deleteFleet}
+               updateDriver={updateDriver}
+               setIsAuth={setIsAuth}
+            />
+          </ProtectedRoute>
+         }
+      />
+      <Route path="*" element={<Navigate to="/"/>} />
+    </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
+export default App;
