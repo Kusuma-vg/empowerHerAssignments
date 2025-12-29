@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/NavBar.jsx";
 import AddFleetForm from "../components/AddFleetForm";
 import FleetCard from "../components/FleetCard";
 
@@ -19,7 +19,7 @@ const AdminDashboard=({fleets,addFleet,deleteFleet,updateDriver,setIsAuth})=>{
                 marginTop:"20px",
             }}
             >
-                {fleet.length ===0 && <p> No Fleets avialable</p>}
+                {fleets.length ===0 && <p> No Fleets avialable</p>}
                 {fleets.map((fleet)=> (
                     <FleetCard key={fleet.id}
                     fleet={fleet}

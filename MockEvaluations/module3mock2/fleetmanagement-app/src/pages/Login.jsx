@@ -16,7 +16,7 @@ const Login=({setIsAuth})=>{
         }
     };
     return (
-        <div sytle={{padding:"40px"}}>
+        <div style={{padding:"40px"}}>
             <h2>Admin Login</h2>
             <form onSubmit={handleLogin}>
                 <input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} required />

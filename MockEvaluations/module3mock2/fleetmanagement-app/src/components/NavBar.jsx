@@ -15,7 +15,7 @@ const Navbar=({setIsAuth})=>{
             backgroundColor:"#1f2937",
             color:"white"}}> 
             <h3>Fleet Management</h3>
-            <button onclick={handleLogout}
+            <button onClick={handleLogout}
             style={{
                 backgroundColor:"gray",
                 color:"white",
